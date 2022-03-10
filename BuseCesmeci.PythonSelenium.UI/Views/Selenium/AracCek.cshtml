@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AracCek</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <button id="jsonRead50Arac">50 Arac Getir</button>  
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#jsonRead50Arac').click(function () {
+            $.getJSON("http://localhost:8080/?page=1&page_size=50", function (data) {
+                $.each(data.value, function (key, item) {
+                    $("#ull").append("<li>" + item.brand + "</li>")
+                })
+            })
+        })
+    })
+</script>
+<ul id="ull">
+
+</ul>
+<script src="~/Scripts/bootstrap.js"></script>
